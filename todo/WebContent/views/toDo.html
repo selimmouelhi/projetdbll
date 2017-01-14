@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div ng-app="firstAppApp" ng-controller="toDoController">
+
+<style type="text/css">
+
+input[type="text"] {
+    border: none;
+    width: 50%;
+    padding: 10px;
+    float: left;
+    font-size: 16px; 
+} 
+	 
+</style>
+	<form name="frm" ng-submit="addTodo()">
+<!--	<input type="email" name="email" ng-model="user.email" required>
+	<span ng-show="frm.email.$error.email"> not an e-mail !  </span>
+	<span ng-show="frm.email.$error.required"> Required !  </span> <br>-->
+   <div class="container">
+	<div class="row">
+        <div class="col-md-6">
+         
+    		
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Search task " ng-model="searchBox" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+	 <input type="text" name="newTodo" ng-model="newTodo" class="form-control input-lg"placeholder="Nouvelle Task"  required> <br>
+  <span ng-show="frm.newTodo.$invalid"> Required !  </span>
+  <button ng-disabled="frm.$invalid" class="btn btn-primary"> Go</button>
+  </form>
+  <ul> <li ng-repeat="todo in todos | filter:searchBox">
+  <input type="checkbox" ng-model = "todo.done">
+  <span id="tasks" ng-class="{'done': todo.done}"> 
+  	{{todo.title}}
+  	</span>
+  </li></ul>
+   <button ng-click="clearCompleted()" class="btn btn-primary btn-sm" > Clear Completed </button> <br>
+
+show list task Fini <input type="checkbox" value="Show" ng-model="checked" ><br />
+<div  ng-show="checked">
+   <ul> <li ng-repeat="dTodo in doneTodos"> 
+      <label ng-click="returnToList(dTodo)"> 
+      <input type="checkbox" ng-model="dTodo.done">
+      </label>
+       <span id="dtasks"  ng-class="{'done': dTodo.done}">
+      {{dTodo.title}}
+      </span> 
+       </li> </ul>
+</div>
+
+     {{List}}
+</div>
+	
+
+
+<!--  <script type="text/javascript">
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        document.getElementById("demo").innerHTML = myObj.name;
+
+    }
+};
+xmlhttp.open("get", "Json.txt", true);
+xmlhttp.send();
+</script> -->
+<script> 
+
+</script>
+
+</div>
+</body>
+</html>
+
+ 
